@@ -1,20 +1,93 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+<form class="form-inline" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="text" formControlName="num" placeholder="№ заказа" name="num" class="form-control" id="text">
+          </div>
+          <div class="form-group">
+            <input formControlName="invoice" placeholder="Тов. накладная" name="invoice" class="form-control" id="invoice">
+          </div>
+          <div class="form-group">
+            <input formControlName="client" placeholder="Клиент" name="client" class="form-control" id="client">
+             <input formControlName="id" name="id"  id="id" value="{{ this.cards.length }}" hidden>
+          </div>
+          <div class="form-group" style="width: 230px">
+            <input   formControlName="time" name="time" id="time" type="datetime-local">
+          </div>
+          <div class="form-group">
+            <button [disabled]="addForm.invalid" class="btn btn-primary">Создать</button>
+          </div>
+</form>
+<div class="row" style="margin-top: 50px;">
+    <div class="col-md-2">
+    <div class="btn-group-vertical">
+                    <button   type="submit" class="btn btn-primary" >Меню</button>
+                    <button   type="submit" class="btn btn-default" (click)="updateData()">Обновить</button>
+                    <button   type="submit" class="btn btn-default" (click)="flag()">Вкл/Выкл флаг</button>
+          </div>
+   <div class="btn-group-vertical">
+                <button   type="submit" class="btn btn-primary" >Сорт. виджетов</button>
+                <button  type="submit" class="btn btn-default" (click)="order('time')">Дата</button>
+                <button   type="submit" class="btn btn-default" (click)="order('client')">Клиент</button>
+                <button  type="submit" class="btn btn-default" (click)="order('id')">ID</button>
+      </div>
+   </div>
+    <div dnd-sortable-container [sortableData]="cards" class="col-md-5">
+      <div *ngFor="let card of cards; let i = index " dnd-sortable [sortableIndex]="i">
+        <table *ngIf="i < 10" style="border-radius: 40px">
+          <tr>
+           <th *ngIf="flags">Флаг</th>
+           <th>№ заказа</th>
+           <th>Тов. накладная</th>
+           <th>Клиент</th>
+           <th>Время нач. загрузки</th>
+           <th style="background-color: white;padding: 0"><button type="button" class="close" (click)="delete(i)" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button></th>
+          </tr>
+          <tr *ngIf="card.num"  >
+                <td *ngIf="flags">
+                  <select>
+                            <option></option>
+                            <option>возврат</option>
+                            <option>опоздала</option>
+                          </select>
+                     </td>
+           <td>{{ card.num }}</td>
+           <td>{{ card.invoice }}</td>
+           <td>{{ card.client }}</td>
+           <td>{{ card.time }}</td>
+          </tr>
+        </table>
+       </div>
+    </div>
+    <div dnd-sortable-container [sortableData]="cards" class="col-md-5">
+      <div  *ngFor="let card of cards; let i = index" dnd-sortable [sortableIndex]="i">
+        <table *ngIf="i > 10" style="border-radius: 40px">
+          <tr>
+           <th *ngIf="flags">Флаг</th>
+           <th>№ заказа</th>
+           <th>Тов. накладная</th>
+           <th>Клиент</th>
+           <th>Время нач. загрузки</th>
+           <th style="background-color: white;padding: 0"><button type="button" class="close" (click)="delete(i)" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button></th>
+          </tr>
+          <tr *ngIf="card.num"  >
+           <td *ngIf="flags">
+           <select>
+              <option></option>
+              <option>возврат</option>
+              <option>опоздала</option>
+            </select>
+           </td>
+           <td>{{ card.num }}</td>
+           <td>{{ card.invoice }}</td>
+           <td>{{ card.client }}</td>
+           <td>{{ card.time }}</td>
+          </tr>
+        </table>
+       </div>
+    </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+</div>
