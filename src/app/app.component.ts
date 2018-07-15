@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import { OrderPipe } from 'ngx-order-pipe';
 
 
@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.addForm = this.formBuilder.group({
       id: [''],
+      flag: [''],
       num: ['', Validators.required],
       invoice: ['', Validators.required],
       client: ['', Validators.required],
@@ -50,6 +51,7 @@ export class AppComponent implements OnInit {
 
   onSubmit(): void {
     this.cards = this.cards || [];
+    this.addForm.value.id = this.cards.length;
     console.log(this.addForm.value);
     this.cards.push(this.addForm.value);
     localStorage.setItem( 'cards', JSON.stringify(this.cards));
