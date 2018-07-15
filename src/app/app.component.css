@@ -1,6 +1,16 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import '~open-iconic/font/css/open-iconic-bootstrap.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@media screen and (max-width: 900px) {
+  .form-group {width: 980px;}
+  div.menu{display: grid; margin-bottom: 10px}
+  .right_panel_cards .left_panel_cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px;
+  }
+}
+
 
 body{
   background: darkgrey;
