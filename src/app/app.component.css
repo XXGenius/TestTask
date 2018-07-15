@@ -11,6 +11,11 @@ img{
   height: 17px
 }
 
+.close_button{
+  background-color: white;
+  padding: 0
+}
+
 .form {
 
   position: relative;

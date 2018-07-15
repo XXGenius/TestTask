@@ -5,9 +5,6 @@ import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {OrderPipe} from 'ngx-order-pipe';
 import {DndModule} from 'ng2-dnd';
-import {TooltipModule} from 'ng2-tooltip-directive';
-
-
 
 
 
@@ -19,10 +16,10 @@ import {TooltipModule} from 'ng2-tooltip-directive';
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    DndModule.forRoot(),
-    TooltipModule
+    DndModule.forRoot()
   ],
   providers: [FormBuilder, OrderPipe ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: []
 })
 export class AppModule { }
