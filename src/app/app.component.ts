@@ -11,15 +11,14 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class AppComponent implements OnInit {
 
   cards: any = [];
-  memory: any = [];
   flags = true;
   addForm: FormGroup;
   flagForm: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder, private orderPipe: OrderPipe) {
-    this.memory = localStorage.getItem('cards');
-    this.cards = JSON.parse(this.memory);
+    const memory = localStorage.getItem('cards');
+    this.cards = JSON.parse(memory);
   }
 
 
@@ -39,7 +38,16 @@ export class AppComponent implements OnInit {
   }
 
 
-  change(i) {
+  delFlag(i) {
+    if (confirm('Удалить флаг?')) {
+      console.log(this.cards[i]);
+      this.cards[i].flag = '';
+      localStorage.setItem( 'cards', JSON.stringify(this.cards));
+    }
+  }
+
+
+  change(i): void {
     console.log(this.flagForm.value);
     this.cards[i].flag = this.flagForm.value.flag;
     localStorage.setItem( 'cards', JSON.stringify(this.cards));
@@ -56,14 +64,16 @@ export class AppComponent implements OnInit {
   }
 
   updateData(): void {
-    this.memory = localStorage.getItem('cards');
-    this.cards = JSON.parse(this.memory);
+    const memory = localStorage.getItem('cards');
+    this.cards = JSON.parse(memory);
   }
 
-  onSubmit(): void {
+  createCard(): void {
     this.cards = this.cards || [];
+    const time =  this.addForm.value.time.replace( 'T', ' ');
+    this.addForm.value.time = time;
     this.addForm.value.id = this.cards.length;
-    console.log(this.addForm.value);
+    console.log(this.addForm.value.time);
     this.cards.push(this.addForm.value);
     localStorage.setItem( 'cards', JSON.stringify(this.cards));
     this.addForm.reset();

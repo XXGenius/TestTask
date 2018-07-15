@@ -1,5 +1,5 @@
 <div class="main container">
-<form class="create_form form-inline" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+<form class="create_form form-inline" [formGroup]="addForm" (ngSubmit)="createCard()">
           <div class="create_form__inline_block form-group">
             <input class="create_form__input form-control" type="number" formControlName="num" placeholder="№ заказа" name="num"  id="text">
           </div>
@@ -32,7 +32,7 @@
    </div>
     <div class="left_panel_cards col-md-5" dnd-sortable-container [sortableData]="cards" >
       <div class="left_panel_card" *ngFor="let card of cards; let i = index " dnd-sortable [sortableIndex]="i">
-        <table class="left_panel_cards___card" *ngIf="i < 10" style="border-radius: 40px">
+        <table class="left_panel_cards___card" *ngIf="i < 7" style="border-radius: 40px">
            <tr class="left_panel_cards___card_fields">
            <th class="left_panel_cards___card_field" *ngIf="flags">Флаг</th>
            <th class="left_panel_cards___card_field">№ заказа</th>
@@ -55,8 +55,8 @@
               </select>
              </div>
            </form>
-           <img  class="left_panel_cards___value_flag" *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" >
-           <img  class="left_panel_cards___value_flag" *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png">
+           <img  class="left_panel_cards___value_flag" *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" (click)="delFlag(i)">
+           <img  class="left_panel_cards___value_flag" *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png" (click)="delFlag(i)">
            </td>
            <td class="left_panel_cards___card_value">{{ card.num }}</td>
            <td class="left_panel_cards___card_value">{{ card.invoice }}</td>
@@ -68,7 +68,7 @@
     </div>
     <div class="right_panel_cards col-md-5" dnd-sortable-container [sortableData]="cards" >
       <div class="right_panel_card" *ngFor="let card of cards; let i = index " dnd-sortable [sortableIndex]="i">
-        <table class="right_panel_cards___card" *ngIf="i > 10" style="border-radius: 40px">
+        <table class="right_panel_cards___card" *ngIf="i > 7" style="border-radius: 40px">
            <tr class="right_panel_cards___card_fields">
            <th class="right_panel_cards___card_field" *ngIf="flags">Флаг</th>
            <th class="right_panel_cards___card_field">№ заказа</th>
@@ -92,8 +92,8 @@
               </select>
              </div>
            </form>
-           <img  class="right_panel_cards___value_flag" *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" >
-           <img  class="right_panel_cards___value_flag" *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png">
+           <img  class="right_panel_cards___value_flag" *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" (click)="delFlag(i)" >
+           <img  class="right_panel_cards___value_flag" *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png"  (click)="delFlag(i)">
            </td>
            <td class="right_panel_cards___card_value">{{ card.num }}</td>
            <td class="right_panel_cards___card_value">{{ card.invoice }}</td>
