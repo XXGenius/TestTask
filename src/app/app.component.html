@@ -1,10 +1,10 @@
 <div class="container">
 <form class="form-inline" [formGroup]="addForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <input type="text" formControlName="num" placeholder="№ заказа" name="num" class="form-control" id="text">
+            <input type="number" formControlName="num" placeholder="№ заказа" name="num" class="form-control" id="text">
           </div>
           <div class="form-group">
-            <input formControlName="invoice" placeholder="Тов. накладная" name="invoice" class="form-control" id="invoice">
+            <input type="number" formControlName="invoice" placeholder="Тов. накладная" name="invoice" class="form-control" id="invoice">
           </div>
           <div class="form-group">
             <input formControlName="client" placeholder="Клиент" name="client" class="form-control" id="client">
@@ -45,13 +45,19 @@
             </button></th>
           </tr>
           <tr *ngIf="card.num"  >
-                <td *ngIf="flags">
-                  <select>
-                            <option></option>
-                            <option>возврат</option>
-                            <option>опоздала</option>
-                  </select>
-                     </td>
+           <td *ngIf="flags">
+           <form *ngIf="!card.flag" class="flag_form" [formGroup]="flagForm" (change)="change(i)">
+              <div class="form-group">
+               <select id="type" formControlName="flag">
+                <option disabled value="null">выберите</option>
+                <option>возврат</option>
+                <option>опоздала</option>
+              </select>
+             </div>
+           </form>
+           <img *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" tooltip="Опоздал" placement="top" show-delay="500" theme="light">
+           <img *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png" tooltip="Возврат" placement="top" show-delay="500" theme="light">
+           </td>
            <td>{{ card.num }}</td>
            <td>{{ card.invoice }}</td>
            <td>{{ card.client }}</td>
@@ -75,11 +81,18 @@
           </tr>
           <tr *ngIf="card.num"  >
            <td *ngIf="flags">
-           <select>
-              <option></option>
-              <option>возврат</option>
-              <option>опоздала</option>
-            </select>
+           <form class="flag_form" [formGroup]="flagForm">
+              <div class="form-group">
+               <label for="type">Тип пользователя:</label>
+               <select id="type" formControlName="type">
+                <option disabled value="null">выберите</option>
+                <option>возврат</option>
+                <option>опоздала</option>
+                <img *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" tooltip="Опоздал" placement="top" show-delay="500" theme="light">
+                <img *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png" tooltip="Возврат" placement="top" show-delay="500" theme="light">
+              </select>
+             </div>
+           </form>
            </td>
            <td>{{ card.num }}</td>
            <td>{{ card.invoice }}</td>
@@ -91,3 +104,4 @@
     </div>
 </div>
 </div>
+

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { OrderPipe } from 'ngx-order-pipe';
 
 
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   memory: any = [];
   flags = true;
   addForm: FormGroup;
+  flagForm: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder, private orderPipe: OrderPipe) {
@@ -23,6 +24,9 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
+    this.flagForm = this.formBuilder.group({
+      flag: null,
+    });
     this.addForm = this.formBuilder.group({
       id: [''],
       flag: [''],
@@ -34,6 +38,12 @@ export class AppComponent implements OnInit {
 
   }
 
+
+  change(i) {
+    console.log(this.flagForm.value);
+    this.cards[i].flag = this.flagForm.value.flag;
+    localStorage.setItem( 'cards', JSON.stringify(this.cards));
+  }
 
   delete(index): void {
     this.cards = this.cards.filter( card => card !== this.cards[index]);

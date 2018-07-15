@@ -1,37 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {NgModule, Pipe} from '@angular/core';
+import {NgModule} from '@angular/core';
 import { AppComponent } from './app.component';
-import { CardComponent } from './card/card.component';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
-import {CalendarModule} from 'primeng/primeng';
-import {
-  MatButtonModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule,
-  MatRippleModule
-} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {OrderPipe} from 'ngx-order-pipe';
 import {DndModule} from 'ng2-dnd';
+import {TooltipModule} from 'ng2-tooltip-directive';
+
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    CalendarModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatRippleModule,
-    DndModule.forRoot()
+    DndModule.forRoot(),
+    TooltipModule
   ],
   providers: [FormBuilder, OrderPipe ],
   bootstrap: [AppComponent]
