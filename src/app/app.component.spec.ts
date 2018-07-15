@@ -5,6 +5,7 @@ import {DndModule} from 'ng2-dnd';
 import {OrderPipe} from 'ngx-order-pipe';
 
 describe('AppComponent', () => {
+  const component = AppComponent;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule,
