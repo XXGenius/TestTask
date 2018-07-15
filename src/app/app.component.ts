@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
 
   }
 
+
   delete(index): void {
     this.cards = this.cards.filter( card => card !== this.cards[index]);
     localStorage.setItem( 'cards', JSON.stringify(this.cards));
@@ -55,7 +56,8 @@ export class AppComponent implements OnInit {
     console.log(this.addForm.value);
     this.cards.push(this.addForm.value);
     localStorage.setItem( 'cards', JSON.stringify(this.cards));
-   }
+    this.addForm.reset();
+  }
 
    order(arg): void {
        this.cards = this.orderPipe.transform(this.cards, arg);
