@@ -46,7 +46,7 @@
           </tr>
           <tr class="left-panel-cards__card-values" *ngIf="card.num" >
            <td class="left-panel-cards__card-value" scope="row" *ngIf="flags">
-           <form class="left-panel-cards__form-flag" *ngIf="!card.flag" class="flag_form" [formGroup]="flagForm" (change)="change(i)">
+           <form class="left-panel-cards__form-flag flag_form" *ngIf="!card.flag" [formGroup]="flagForm" (change)="change(i)">
               <div class="left-panel-cards__form-flag-select">
                 <select class="left-panel-cards__form-flag-option" id="flag" formControlName="flag">
                 <option class="left-panel-cards__form-flag-option" disabled value="null">выберите</option>
