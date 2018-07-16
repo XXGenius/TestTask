@@ -15,16 +15,16 @@
             <input  class="create_form__input form-control"  placeholder="Время нач. выгрузки" formControlName="time" name="time" id="time" type="datetime-local" >
           </div>
           <div class="create_form__inline_block form-group mb-2">
-            <button  class="create_form__button btn btn-primary" [disabled]="addForm.invalid" >Создать</button>
+            <button  class="create_form__button btn btn-info" [disabled]="addForm.invalid" >Создать</button>
           </div>
 </form>
 <div class="content row" style="margin-top: 50px;">
     <div class="menu col-md-2">
     <div class="menu__button_group ui-grid-responsive btn-group-vertical  btn-group-xs">
-        <button class="menu__button__disable btn btn-primary" type="submit"  [disabled]="true">Меню</button>
+        <button class="menu__button__disable btn btn-info" type="submit"  [disabled]="true">Меню</button>
         <button class="menu__button btn btn-default" type="submit"  (click)="updateData()">Обновить</button>
         <button class="menu__button btn btn-default" type="submit"  (click)="flag()">Вкл/Выкл флаг</button>
-        <button class="menu__button__disable btn btn-primary" type="submit"  [disabled]="true" >Фильтр</button>
+        <button class="menu__button__disable btn btn-info" type="submit"  [disabled]="true" >Фильтр</button>
         <button class="menu__button btn btn-default" type="submit"  (click)="order('time')">Дата</button>
         <button class="menu__button btn btn-default" type="submit"  (click)="order('client')">Клиент</button>
         <button class="menu__button btn btn-default" type="submit"  (click)="order('id')">ID</button>
