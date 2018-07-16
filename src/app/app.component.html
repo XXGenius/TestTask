@@ -32,73 +32,73 @@
      </div>
     <div class="left-panel-cards col-md-5" dnd-sortable-container [sortableData]="cards">
       <div class="left-panel-card" *ngFor="let card of cards; let i = index " dnd-sortable [sortableIndex]="i">
-        <table class="left-panel-cards___card table table-responsive table-sm table-info" *ngIf="!(i%2)">
-           <tr class="left-panel-cards___card-fields">
-           <th class="left-panel-cards___card-field" scope="row" *ngIf="flags">Флаг</th>
-           <th class="left-panel-cards___card-field" scope="row" >№ заказа</th>
-           <th class="left-panel-cards___card-field" scope="row" >Тов. накладная</th>
-           <th class="left-panel-cards___card-field" scope="row" >Клиент</th>
-           <th class="left-panel-cards___card-field" scope="row" >Время нач. загрузки</th>
-           <th class="left-panel-cards___card-field close_button" scope="row">
-           <button class="left_panel_cards___card-field close_button close" type="button"  (click)="delete(i)" aria-label="Close">
+        <table class="left-panel-cards__card table table-responsive table-sm table-info" *ngIf="!(i%2)">
+           <tr class="left-panel-cards__card-fields">
+           <th class="left-panel-cards__card-field" scope="row" *ngIf="flags">Флаг</th>
+           <th class="left-panel-cards__card-field" scope="row" >№ заказа</th>
+           <th class="left-panel-cards__card-field" scope="row" >Тов. накладная</th>
+           <th class="left-panel-cards__card-field" scope="row" >Клиент</th>
+           <th class="left-panel-cards__card-field" scope="row" >Время нач. загрузки</th>
+           <th class="left-panel-cards__card-field close_button" scope="row">
+           <button class="left_panel_cards__card-field close_button close" type="button"  (click)="delete(i)" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
             </button></th>
           </tr>
-          <tr class="left-panel-cards___card-values" *ngIf="card.num" >
-           <td class="left-panel-cards___card-value" scope="row" *ngIf="flags">
-           <form class="left-panel-cards___form-flag" *ngIf="!card.flag" class="flag_form" [formGroup]="flagForm" (change)="change(i)">
+          <tr class="left-panel-cards__card-values" *ngIf="card.num" >
+           <td class="left-panel-cards__card-value" scope="row" *ngIf="flags">
+           <form class="left-panel-cards__form-flag" *ngIf="!card.flag" class="flag_form" [formGroup]="flagForm" (change)="change(i)">
               <div class="left-panel-cards__form-flag-select">
-                <select class="left-panel-cards___form-flag-option" id="flag" formControlName="flag">
-                <option class="left-panel-cards___form-flag-option" disabled value="null">выберите</option>
-                <option class="left-panel-cards___form-flag-option">возврат</option>
-                <option class="left-panel-cards___form-flag-option">опоздала</option>
+                <select class="left-panel-cards__form-flag-option" id="flag" formControlName="flag">
+                <option class="left-panel-cards__form-flag-option" disabled value="null">выберите</option>
+                <option class="left-panel-cards__form-flag-option">возврат</option>
+                <option class="left-panel-cards__form-flag-option">опоздала</option>
               </select>
              </div>
            </form>
-           <img  class="left-panel-cards___value-flag" *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" (click)="delFlag(i)">
-           <img  class="left-panel-cards___value-flag" *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png" (click)="delFlag(i)">
+           <img  class="left-panel-cards__value-flag" *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" (click)="delFlag(i)">
+           <img  class="left-panel-cards__value-flag" *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png" (click)="delFlag(i)">
            </td>
-           <td class="left-panel-cards___card-value" scope="row">{{ card.num }}</td>
-           <td class="left-panel-cards___card-value" scope="row">{{ card.invoice }}</td>
-           <td class="left-panel-cards___card-value" scope="row">{{ card.client }}</td>
-           <td class="left-panel-cards___card-value" scope="row">{{ card.time }}</td>
+           <td class="left-panel-cards__card-value" scope="row">{{ card.num }}</td>
+           <td class="left-panel-cards__card-value" scope="row">{{ card.invoice }}</td>
+           <td class="left-panel-cards__card-value" scope="row">{{ card.client }}</td>
+           <td class="left-panel-cards__card-value" scope="row">{{ card.time }}</td>
           </tr>
         </table>
        </div>
     </div>
     <div class="right-panel-cards col-md-5" dnd-sortable-container [sortableData]="cards" >
       <div class="right-panel-card" *ngFor="let card of cards; let i = index " dnd-sortable [sortableIndex]="i">
-        <table class="right-panel-cards___card table table-responsive table-sm table-info" *ngIf=" i%2 " >
-           <tr class="right-panel-cards___card-fields" scope="row">
-           <th class="right-panel-cards___card-field" *ngIf="flags">Флаг</th>
-           <th class="right-panel-cards___card-field">№ заказа</th>
-           <th class="right-panel-cards___card-field">Тов. накладная</th>
-           <th class="right-panel-cards___card-field">Клиент</th>
-           <th class="right-panel-cards___card-field">Время нач. загрузки</th>
-           <th class="right-panel-cards___card-field close_button">
-           <button class="right-panel-cards___card-field close_button close" type="button" (click)="delete(i)" aria-label="Close">
+        <table class="right-panel-cards__card table table-responsive table-sm table-info" *ngIf=" i%2 " >
+           <tr class="right-panel-cards__card-fields" scope="row">
+           <th class="right-panel-cards__card-field" *ngIf="flags">Флаг</th>
+           <th class="right-panel-cards__card-field">№ заказа</th>
+           <th class="right-panel-cards__card-field">Тов. накладная</th>
+           <th class="right-panel-cards__card-field">Клиент</th>
+           <th class="right-panel-cards__card-field">Время нач. загрузки</th>
+           <th class="right-panel-cards__card-field close_button">
+           <button class="right-panel-cards__card-field close_button close" type="button" (click)="delete(i)" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
             </button>
            </th>
           </tr>
-          <tr class="right-panel-cards___card_values" scope="row" *ngIf="card.num">
-           <td class="right-panel-cards___card_value" *ngIf="flags">
-           <form class="right-panel-cards___form-flag flag_form" *ngIf="!card.flag" [formGroup]="flagForm" (change)="change(i)">
+          <tr class="right-panel-cards__card_values" scope="row" *ngIf="card.num">
+           <td class="right-panel-cards__card_value" *ngIf="flags">
+           <form class="right-panel-cards__form-flag flag_form" *ngIf="!card.flag" [formGroup]="flagForm" (change)="change(i)">
               <div class="right-panel-cards__form-flag-select">
-                <select class="right-panel-cards___form-flag-option" id="flag" formControlName="flag">
-                <option class="right-panel-cards___form-flag-option" disabled value="null">выберите</option>
-                <option class="right-panel-cards___form-flag-option">возврат</option>
-                <option class="right-panel-cards___form-flag-option">опоздала</option>
+                <select class="right-panel-cards__form-flag-option" id="flag" formControlName="flag">
+                <option class="right-panel-cards__form-flag-option" disabled value="null">выберите</option>
+                <option class="right-panel-cards__form-flag-option">возврат</option>
+                <option class="right-panel-cards__form-flag-option">опоздала</option>
               </select>
              </div>
            </form>
-           <img  class="right-panel-cards___value-flag" *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" (click)="delFlag(i)">
-           <img  class="right-panel-cards___value-flag" *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png"  (click)="delFlag(i)">
+           <img  class="right-panel-cards__value-flag" *ngIf="card.flag === 'опоздала'" src="../assets/ico/last.png" (click)="delFlag(i)">
+           <img  class="right-panel-cards__value-flag" *ngIf="card.flag === 'возврат'" src="../assets/ico/back.png"  (click)="delFlag(i)">
            </td>
-           <td class="right-panel-cards___card-value">{{ card.num }}</td>
-           <td class="right-panel-cards___card-value">{{ card.invoice }}</td>
-           <td class="right-panel-cards___card-value">{{ card.client }}</td>
-           <td class="right-panel-cards___card-value">{{ card.time }}</td>
+           <td class="right-panel-cards__card-value">{{ card.num }}</td>
+           <td class="right-panel-cards__card-value">{{ card.invoice }}</td>
+           <td class="right-panel-cards__card-value">{{ card.client }}</td>
+           <td class="right-panel-cards__card-value">{{ card.time }}</td>
           </tr>
         </table>
       </div>
