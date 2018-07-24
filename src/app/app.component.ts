@@ -12,77 +12,54 @@ export class AppComponent implements OnInit {
 
   cards = [
     {
-      'id': 3,
-      'flag': null,
-      'num': 126, 'invoice': 764543,
-      'client': 'ООО Весна',
-      'time': '2018-06-30 14:45'
+      id: 0,
+      flag: null,
+      num: 126,
+      invoice: 764543,
+      client: 'ООО Весна',
+      time: '2018-06-30 14:45'
     },
     {
-      'id': 2,
-      'flag': null,
-      'num': 36,
-      'invoice': 345321,
-      'client': 'ООО Родина',
-      'time': '2018-06-28 05:05'
+      id: 1,
+      flag: null,
+      num: 36,
+      invoice: 345321,
+      client: 'ООО Родина',
+      time: '2018-06-28 05:05'
     },
     {
-      'id': 1,
-      'flag': null,
-      'num': 15,
-      'invoice': 123324,
-      'client': 'ООО Россельмаш',
-      'time': '2018-07-11 14:23'
+      id: 2,
+      flag: null,
+      num: 15,
+      invoice: 123324,
+      client: 'ООО Россельмаш',
+      time: '2018-07-11 14:23'
     },
     {
-      'id': 0,
-      'flag': '',
-      'num': 12,
-      'invoice': 123321,
+      id: 3,
+      flag: '',
+      num: 12,
+      invoice: 123321,
       'client': 'ООО Коваль',
       'time': '2018-07-01 12:03'
     },
     {
-      'id': 4,
-      'flag': null,
-      'num': 87,
-      'invoice': 543574,
-      'client': 'ОАО ТрансМастер',
+      id: 4,
+      flag: null,
+      num: 87,
+      invoice: 543574,
+      client: 'ОАО ТрансМастер',
       'time': '2018-07-07 16:31'
     },
     {
-      'id': 5,
-      'flag': null,
-      'num': 184,
-      'invoice': 121375,
-      'client': 'ООО Аквасвит',
-      'time': '2018-07-11 23:06'
-    },
-    {
-      'id': 6,
-      'flag': null,
-      'num': 65,
-      'invoice': 124,
-      'client': 'ООО Мальборо',
-      'time': '2018-06-25 03:04'
-    },
-    {
-      'id': 7,
-      'flag': null,
-      'num': 198,
-      'invoice': 413546,
-      'client': 'ОАО Голасо',
-      'time': '2018-07-14 13:21'
-    },
-    {
-      'id': 8,
-      'flag': '',
-      'num': 176,
-      'invoice': 8913476,
-      'client': 'ООО Бумеранг',
-      'time': '2018-07-04 03:04'
+      id: 5,
+      flag: null,
+      num: 184,
+      invoice: 121375,
+      client: 'ООО Аквасвит',
+      time: '2018-07-11 23:06'
     }
-    ];
+  ];
 
   flags = true;
   addForm: FormGroup;
